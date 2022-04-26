@@ -1,0 +1,5 @@
+{
+    "editor.renderWhitespace":"none",
+    "editor.fontSize": 16,
+    "powershell.scriptAnalysis.enable": false,
+}
