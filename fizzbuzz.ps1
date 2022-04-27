@@ -29,7 +29,18 @@ for example 15 should print FizzBuzz.
 ...
 #>
 
-# 301
+# modulos (%) operator
+0 % 2  #-> 0
+1 % 2  #-> 1
+2 % 2  #-> 0
+3 % 2  #-> 1
+4 % 2  #-> 0
+
+$num % 2 -eq 0 # is even
+
+
+
+# 301 First pass
 foreach($num in 1..100){
     if($num % 3 -eq 0 -and $num % 5 -eq 0){
         $result = "FizzBuzz"
@@ -79,9 +90,9 @@ foreach($n in 1..100){$n}
 
 
 #pipeline
-1..100 | ForEach-Object{$_}
+1..100 | ForEach-Object {$_}
 
-#12
+#12 Use alias and remove whitespace
 1..100|%{$_}
 
 
@@ -115,8 +126,8 @@ $num % 3 -eq 0 ? "Fizz" : ""
 
 # Flip the condition
 $num % 3 ? "" : "Fizz"
-0 ? "" : "Fizz"  #-> "Fizz"
 1 ? "" : "Fizz"  #-> ""
+0 ? "" : "Fizz"  #-> "Fizz"
 
 
 
@@ -128,10 +139,13 @@ $num % 3 ? "" : "Fizz"
 
 # If false
 @("Fizz",$null)[$num % 3]
+
 @("Fizz")[$num%3]
 
 @("Fizz")[0]    #-> "Fizz"
 @("Fizz")[1]    #-> $null
+@("Fizz")[2]    #-> $null
+
 
 
 # Back to FizzBuzz
@@ -153,16 +167,24 @@ $num % 3 ? "" : "Fizz"
 }
 
 # number condition
+$r="";$num = 4
 # 24
 if($r -eq ""){$r=$num}
 $r
 
 
 # with ternary
-$r -eq "" ? $r : $num
+$r -eq "" ? $num : $r
+
+# Flip operator
 $r ? $r : $num
+
+$r="";     $r ? $r : $num
+$r="Fizz"; $r ? $r : $num
+
 # 10
 $r ?$r :$num
+
 
 
 

@@ -1,5 +1,4 @@
-
-
+function prompt {"#PSHSummit>"};Clear-Host
 
 
 
@@ -56,7 +55,7 @@ $array|%{$_}
 $a-eq$b
 
 
-5 -eq5 -and 5 -ne 9
+5 -eq 5 -and 5 -ne 9
 5-eq5-and5-ne9
 $a-eq$b-and$c-ne$d
 
@@ -67,13 +66,16 @@ $array = 1..6
 $array -join '-'  #-> "1-2-3-4-5-6"
 $array-join'-'    #-> "1-2-3-4-5-6"
 -join$array       #-> "123456"
+$array            #-> "1 2 3 4 5 6"
 
 
 "key=value" -split '='  #-> @("key","value")
 "key=value"-split'='    #-> @("key","value")
 
 "949-555-1234"-replace'-',''  #-> "9495551234"
+# Remove
 "949-555-1234"-replace'-'     #-> "9495551234"
+# Chain replace
 "949-555-1234"-replace'-'-replace5 #->"9491234"
 
 
@@ -202,6 +204,8 @@ $k  #-> 2
 $j=$k=1
 ($j++)   #-> 1
 (++$k)   #-> 2
+
+
 
 #endregion
 
