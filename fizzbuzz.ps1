@@ -125,6 +125,7 @@ $num % 3 -eq 0 ? "Fizz" : ""
 
 
 # Flip the condition
+$num % 3 -ne 0 ? "" : "Fizz"
 $num % 3 ? "" : "Fizz"
 1 ? "" : "Fizz"  #-> ""
 0 ? "" : "Fizz"  #-> "Fizz"
@@ -146,6 +147,12 @@ $num % 3 ? "" : "Fizz"
 @("Fizz")[1]    #-> $null
 @("Fizz")[2]    #-> $null
 
+
+# Must be an arrary or doesn't work
+"Fizz"[0]       #-> "F"
+"Fizz"[1]       #-> "i"
+("Fizz")[0]     #-> "F"
+("Fizz")[1]     #-> "i"
 
 
 # Back to FizzBuzz
@@ -219,6 +226,11 @@ $r ?$r :$num
 }
 
 
+# assign and use value inline
+($a=5)+$a  #-> 10
+($a=5*2) ? $a : "Zero"  #-> 10
+($a=5*0) ? $a : "Zero"  #-> "Zero"
+
 
 # 61 inline the use of $r
 1..100|%{
@@ -230,11 +242,11 @@ $r ?$r :$num
 1..100|%{($r=@("Fizz")[$_%3]+@("Buzz")[$_%5])?$r :$_}
 
 
-
 # Is that the best we can do?
 
 #15
 @("Fizz")[$_%3]
+
 
 # String multiplication
 "Fizz" * 1  #-> "Fizz"
@@ -261,6 +273,19 @@ $value ??= "default"
 # Null Coalescing Operator
 $result = $value ?? "default"
 
+$null ?? "isNull"   #-> "isNull"
+"Fizz" ?? "isNull"  #-> "Fizz"
+
+
+# but must be null
+$null ?? "isNull"   #-> "isNull"
+$true ?? "isNull"   #-> $true
+$false ?? "isNull"  #-> $false
+1 ?? "isNull"       #-> 1
+0 ?? "isNull"       #-> 0
+"" ?? "isNull"      #-> ""
+
+
 # vs ternary
 $r ?$r :$_
 $r ??$_
@@ -270,3 +295,24 @@ $r ??$_
 1..100|%{($r=@("Fizz")[$_%3]+@("Buzz")[$_%5])?$r :$_}
 #45 null coalescing
 1..100|%{@("Fizz")[$_%3]+@("Buzz")[$_%5]??$_}
+
+
+# Nicolas Baudin
+# @NicolasBn44
+
+# scriptblock as string
+@("Fizz")[0]    #-> "Fizz"
+@("Fizz")[1]    #-> $null
+
+{Fizz}[0]       #-> "Fizz"
+{Fizz}[1]       #-> $null
+
+
+# one problem, can't add together
+{Fizz} + {Buzz}  #-> InvalidOperation: does not contain a method named 'op_Addition'.
+
+# but remember left to right casting order
+"Fizz" + {Buzz}  #-> "FizzBuzz"
+
+#42 scriptblock as string
+1..100|%{@("Fizz",)[$_%3]+{Buzz}[$_%5]??$_}
