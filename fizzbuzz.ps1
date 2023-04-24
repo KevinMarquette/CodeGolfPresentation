@@ -297,8 +297,10 @@ $r ??$_
 1..100|%{@("Fizz")[$_%3]+@("Buzz")[$_%5]??$_}
 
 
+
 # Nicolas Baudin
 # @NicolasBn44
+
 
 # scriptblock as string
 @("Fizz")[0]    #-> "Fizz"
