@@ -1,0 +1,65 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"pwsh","items":[{"aliases":[],"languageName":"pwsh","name":"pwsh"}]}}
+
+#!markdown
+
+# Prime Numbers
+
+Print all the prime numbers from 1 to 100 inclusive, each on their own line.
+https://code.golf/prime-numbers#powershell
+
+Prime number is a whole number greater than 1 that cannot be exactly divided by any whole number other than itself and 1:
+
+## Prime Numbers between 1 and 100
+2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97
+
+#!pwsh
+
+$primes = echo 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97
+filter test-array{
+    process {
+        $numbers += @($_)
+    }
+    end {
+        # are all the prime numbers in the list
+        $refference | ?{}
+    }
+}
+3 | test-prime
+11 | test-prime
+6 | test-prime
+
+#!pwsh
+
+$primes = echo 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97
+echo 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97 | should -be $primes
+
+#!markdown
+
+# Article: Prime Numbers in PowerShell
+Link: https://www.tunbury.org/prime-numbers-in-powershell/
+Author: Mark Elvers
+Twitter: @mtelvers
+
+#!pwsh
+
+# loop over all the numbers from 2 to 100
+for ($number = 2; $number -lt 100; $number++) {
+    $prime = $true
+
+    # check each value from 2 up until the square root of the number
+    for ($divisor = 2; $divisor -le [Math]::Sqrt($number); $divisor++) {
+
+        # if the number is evenly divisible, not prime. Go to the next number
+        if ($number % $divisor -eq 0) {
+            $prime = $false
+            break;
+        }
+    }
+
+    # Output the number if it is prime
+    if ($prime) {
+        Write-Host -NoNewLine "$number "
+    }
+}
