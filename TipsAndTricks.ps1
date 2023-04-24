@@ -61,20 +61,38 @@ $a-eq$b-and$c-ne$d
 
 
 
-# Join, Split, Replace
+# Join
 $array = 1..6
 $array -join '-'  #-> "1-2-3-4-5-6"
 $array-join'-'    #-> "1-2-3-4-5-6"
+$array-join0      #-> "10203040506"
+
+
 -join$array       #-> "123456"
 $array            #-> "1 2 3 4 5 6"
 
 
+# Split
+
 "key=value" -split '='  #-> @("key","value")
 "key=value"-split'='    #-> @("key","value")
 
+"key0value"-split0      #-> @("key","value")
+
+
+-split"One Two Three"   #-> @("One","Two","Three")
+
+
+
+# Replace
 "949-555-1234"-replace'-',''  #-> "9495551234"
+
+
 # Remove
 "949-555-1234"-replace'-'     #-> "9495551234"
+
+"949055501234"-replace0       #-> "9495551234"
+
 # Chain replace
 "949-555-1234"-replace'-'-replace5 #->"9491234"
 
@@ -192,8 +210,9 @@ $n="a"    #-> no output
 $n = 0
 $n = $n + 1
 $n += 1
-$n++
-++$n
+
+$n++    # use value then add 1
+++$n    # add 1 then use value
 
 $j=$k=1
 $j++ + 20  #-> 21
