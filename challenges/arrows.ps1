@@ -1,5 +1,9 @@
-<#
-tarting at [0, 0] print the cumulative result of applying each of the given Unicode arrow arguments. The arrows will be a random combination of these:
+<# https://code.golf/arrows#powershell
+
+Starting at [0, 0] print the cumulative result of 
+applying each of the given Unicode arrow arguments. 
+
+The arrows will be a random combination of these:
 [-1, -1]	↙ U+2199, ↲ U+21B2, ⇙ U+21D9
 [-1,  0]	← U+2190, ⇐ U+21D0, ⇦ U+21E6
 [-1,  1]	↖ U+2196, ↰ U+21B0, ⇖ U+21D6
@@ -9,6 +13,23 @@ tarting at [0, 0] print the cumulative result of applying each of the given Unic
 [ 1, -1]	↘ U+2198, ↳ U+21B3, ⇘ U+21D8
 [ 1,  0]	→ U+2192, ⇒ U+21D2, ⇨ U+21E8
 [ 1,  1]	↗ U+2197, ↱ U+21B1, ⇗ U+21D7
+
+
+Input: 
+    ⇑⇒↗⇧↑↗↑⇑⇒⇒
+
+Output:
+0 1
+1 1
+2 2
+2 3
+2 4
+3 5
+3 6
+3 7
+4 7
+5 7
+
 #>
 
 
