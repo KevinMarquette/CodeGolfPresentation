@@ -4,6 +4,16 @@ function prompt {"#PSHSummit>"};Clear-Host
 
 
 
+# Output Notations
+Get-Date  #-> "Wednesday, April 1, 2022 3:41:01 PM"
+1 + 2     #-> 3
+
+
+
+# 8: Numer of character
+Get-Date
+
+
 
 
 # Printing Output for code.golf
@@ -11,12 +21,6 @@ Write-Host 'Hello, World!'
 Write-Output 'Hello, World!'
 
 'Hello, World!'
-
-
-
-# Output Notations
-Get-Date  #-> "Wednesday, April 1, 2022 3:41:01 PM"
-1 + 2     #-> 3
 
 
 
@@ -123,6 +127,10 @@ echo First Second Third
 
 
 # split string
+"First Second Third"-split" "
+
+-split"First Second Third"
+
 "First line,Second line,Third line"-split','
 
 
@@ -254,3 +262,33 @@ while(1){Get-Date}
 1..100|%{$_}
 
 #endregion
+
+
+# filtering
+1..6 | Where-Object { $_ -gt 3}   #-> @(4,5,6)
+1..6 | Where { $_ -gt 3}
+
+
+1..6 | ?{ $_ -gt 3 }
+1..6|?{$_-gt3}
+
+
+# -eq -gt -lt with collections
+1..6 -gt 3   #-> @(4,5,6)
+1..6-gt3     #-> @(4,5,6)
+
+# works with match
+"one","two","three" -match 'e'  #-> @("one","three")
+
+
+
+
+# Soft Get-* Alaises
+Get-Date
+Date
+
+Get-Service
+Service
+
+Get-Verb
+Verb
