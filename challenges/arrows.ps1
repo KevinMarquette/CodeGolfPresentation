@@ -266,7 +266,7 @@ $args|%{$v=($m=@{'↙↲⇙'=-1,-1
 
 
 
-# Audience Challenge: Who spotted 1 more? (2 char)
+# Expert Audience Challenge: Who spotted 1 more? (2 char)
 
 
 1+0     #-> 1
