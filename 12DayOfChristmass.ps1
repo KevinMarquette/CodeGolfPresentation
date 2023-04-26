@@ -313,7 +313,7 @@ Twelve Drummers Drumm$n"-split'\n')[++$i..0]}
 
 
 
-# 425: almost final, remove $i
+# 425: almost final, remove $i=0
 Remove-Variable i
 
 $n="ing,"
@@ -340,6 +340,7 @@ Twelve Drummers Drumm$n"-split'\n')[++$i..0]}
 
 
 # 424: Final, remove newline in split
+Remove-Variable i
 
 $n="ing,"
 echo First Second Third Fourth Fifth Sixth Seventh Eighth Ninth Tenth Eleventh Twelfth|%{"On the $_ day of Christmas

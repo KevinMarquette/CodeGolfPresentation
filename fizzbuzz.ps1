@@ -40,7 +40,8 @@ $num % 2 -eq 0 # is even
 
 
 
-# 301 First pass
+# 301: First pass
+
 foreach($num in 1..100){
     if($num % 3 -eq 0 -and $num % 5 -eq 0){
         $result = "FizzBuzz"
@@ -59,7 +60,8 @@ foreach($num in 1..100){
 
 
 
-#245 Remove duplicate checks
+# 245: Remove duplicate checks
+
 foreach($num in 1..100){
     $result = ""
     if($num % 3 -eq 0){
@@ -74,7 +76,8 @@ foreach($num in 1..100){
     Write-Output $result
 }
 
-#138 Variable names and compress the lines
+# 138: Variable names and compress the lines
+
 foreach($n in 1..100){
     $r=""
     if($n % 3 -eq 0){$r+="Fizz"}
@@ -85,19 +88,19 @@ foreach($n in 1..100){
 
 
 # Iterating Numbers
-#25
+# 25:
 foreach($n in 1..100){$n}
 
 
 #pipeline
 1..100 | ForEach-Object {$_}
 
-#12 Use alias and remove whitespace
+# 12: Use alias and remove whitespace
 1..100|%{$_}
 
 
 
-#125 Replace foreach(item in list)
+# 125: Replace foreach(item in list)
 1..100|%{
     $r=""
     if($_ % 3 -eq 0){$r+="Fizz"}
@@ -109,7 +112,7 @@ foreach($n in 1..100){$n}
 
 # if conditions
 
-#28
+# 28:
 if($_ % 3 -eq 0){$r+="Fizz"}
 
 $r+=if($_ % 3 -eq 0){"Fizz"}
@@ -118,13 +121,16 @@ $r+=if($_ % 3 -eq 0){"Fizz"}
 
 # Ternary = (condition) ? true : false
 # ? and : can be valid parts of variable names
+
 ($a -eq $b) ? $true : $false
 
 
 $num % 3 -eq 0 ? "Fizz" : ""
 
 
+
 # Flip the condition
+
 $num % 3 -ne 0 ? "" : "Fizz"
 $num % 3 ? "" : "Fizz"
 1 ? "" : "Fizz"  #-> ""
@@ -133,12 +139,15 @@ $num % 3 ? "" : "Fizz"
 
 
 # old school ternary
+
 @($false,$true)[$a -eq $b]
 @($false,$true)[0]  #-> $false
 @($false,$true)[1]  #-> $true
 
 
+
 # If false
+
 @("Fizz",$null)[$num % 3]
 
 @("Fizz")[$num%3]
@@ -149,13 +158,16 @@ $num % 3 ? "" : "Fizz"
 
 
 # Must be an arrary or doesn't work
+
 "Fizz"[0]       #-> "F"
 "Fizz"[1]       #-> "i"
 ("Fizz")[0]     #-> "F"
 ("Fizz")[1]     #-> "i"
 
 
-# Back to FizzBuzz
+
+# 125: Back to FizzBuzz
+
 1..100|%{
     $r=""
     if($_ % 3 -eq 0){$r+="Fizz"}
@@ -164,7 +176,9 @@ $num % 3 ? "" : "Fizz"
     $r
 }
 
-# 107 Replace if statements
+
+# 107: Replace if statements
+
 1..100|%{
     $r=""
     $r+=@("Fizz")[$_%3]
@@ -173,14 +187,18 @@ $num % 3 ? "" : "Fizz"
     $r
 }
 
+
 # number condition
+
 $r="";$num = 4
 # 24
 if($r -eq ""){$r=$num}
 $r
 
 
+
 # with ternary
+
 $r -eq "" ? $num : $r
 
 # Flip operator
@@ -210,6 +228,7 @@ $r ?$r :$num
 
 
 # 89 w/ ternary
+
 1..100|%{
     $r=""
     $r+=@("Fizz")[$_%3]
@@ -220,6 +239,7 @@ $r ?$r :$num
 
 
 # 68 inline fizz buzz
+
 1..100|%{
     $r=@("Fizz")[$_%3]+@("Buzz")[$_%5]
     $r ?$r :$_
@@ -227,6 +247,9 @@ $r ?$r :$num
 
 
 # assign and use value inline
+
+$a=5       #-> $null
+($a=5)     #-> 5
 ($a=5)+$a  #-> 10
 ($a=5*2) ? $a : "Zero"  #-> 10
 ($a=5*0) ? $a : "Zero"  #-> "Zero"
@@ -243,6 +266,7 @@ $r ?$r :$num
 
 
 # Is that the best we can do?
+
 
 #15
 @("Fizz")[$_%3]
@@ -292,11 +316,11 @@ $r ?$r :$_
 $r ??$_
 
 
-
-#53 bak to our one-liner
+# 53: one liner
 1..100|%{($r=@("Fizz")[$_%3]+@("Buzz")[$_%5])?$r :$_}
-
-#45 null coalescing
+1..100|%{($r=@("Fizz")[$_%3]+@("Buzz")[$_%5])??$_}
+1..100|%{$r=@("Fizz")[$_%3]+@("Buzz")[$_%5]??$_}
+# 45: null coalescing
 1..100|%{@("Fizz")[$_%3]+@("Buzz")[$_%5]??$_}
 
 
@@ -322,4 +346,4 @@ $r ??$_
 "Fizz" + {Buzz}  #-> "FizzBuzz"
 
 #42 scriptblock as string
-1..100|%{@("Fizz",)[$_%3]+{Buzz}[$_%5]??$_}
+1..100|%{@("Fizz")[$_%3]+{Buzz}[$_%5]??$_}
