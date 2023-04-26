@@ -335,6 +335,10 @@ Twelve Drummers Drumm$n"-split'\n')[++$i..0]}
 
 
 
+# Expert Audience Challenge: Who spotted 1 more? (1 char)
+
+
+
 # 424: Final, remove newline in split
 
 $n="ing,"

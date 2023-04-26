@@ -248,6 +248,7 @@ $r ?$r :$num
 @("Fizz")[$_%3]
 
 
+
 # String multiplication
 "Fizz" * 1  #-> "Fizz"
 "Fizz" * 0  #-> [String]::Empty
@@ -291,10 +292,14 @@ $r ?$r :$_
 $r ??$_
 
 
-#53 one liner
+
+#53 bak to our one-liner
 1..100|%{($r=@("Fizz")[$_%3]+@("Buzz")[$_%5])?$r :$_}
+
 #45 null coalescing
 1..100|%{@("Fizz")[$_%3]+@("Buzz")[$_%5]??$_}
+
+
 
 
 
