@@ -227,3 +227,4 @@ for ($divisor = $number - 1; $number % $divisor -ne 0; $divisor--) {}
 
 # 35: final solution:
 2..97|?{for($d=$_-1;$_%$d--){};!$d}
+

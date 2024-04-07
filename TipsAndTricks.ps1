@@ -24,6 +24,17 @@ Write-Output 'Hello, World!'
 
 
 
+# Accessing arguments
+$args|%{
+    $_
+}
+
+
+
+# Unicode Characters
+"😀🙂😐"
+
+
 #region Whitespace
 # .vscode\settings.json
 # "editor.renderWhitespace":"all"
@@ -220,8 +231,8 @@ $n = 0
 $n = $n + 1
 $n += 1
 
-$n++    # use value then add 1
-++$n    # add 1 then use value
+($n++)    # use value then add 1
+(++$n)    # add 1 then use value
 
 $j=$k=1
 $j++ + 20  #-> 21
@@ -293,3 +304,7 @@ Service
 
 Get-Verb
 Verb
+
+process
+&"process"
+Get-Process
