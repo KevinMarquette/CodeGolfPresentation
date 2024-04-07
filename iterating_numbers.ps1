@@ -43,8 +43,8 @@ while(1){Get-Date} # 18
 
 
 # Infinite for loops
+
 for(;1;){Get-Date} # 18
 for(;;){Get-Date} # 17
-for("ever ever"){Get-Date} #15
-
+for(){Get-Date} #15
 
