@@ -1,6 +1,5 @@
 
-<#
-Print the lyrics to the song The 12 Days of Christmas:
+<# Print the lyrics to the song The 12 Days of Christmas:
 
 On the First day of Christmas
 My true love sent to me
@@ -331,7 +330,8 @@ Eight Maids-a-Milk$n
 Nine Ladies Danc$n
 Ten Lords-a-Leap$n
 Eleven Pipers Pip$n
-Twelve Drummers Drumm$n"-split'\n')[++$i..0]}
+Twelve Drummers Drumm$n"-split'
+')[++$i..0]}
 
 
 
