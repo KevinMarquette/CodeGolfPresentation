@@ -5,7 +5,7 @@ function prompt {"#PSHSummit>"};Clear-Host
 
 
 # Output Notations
-Get-Date  #-> "Wednesday, April 1, 2022 3:41:01 PM"
+Get-Date  #-> "Tuesday, April 9, 2024 2:05:01 PM"
 1 + 2     #-> 3
 
 
@@ -13,6 +13,7 @@ Get-Date  #-> "Wednesday, April 1, 2022 3:41:01 PM"
 # 8: Numer of character
 Get-Date
 
+Get-Date  # 8: char
 
 
 
@@ -24,7 +25,7 @@ Write-Output 'Hello, World!'
 
 
 
-# Accessing arguments
+# Accessing arguments in Code.Golf
 $args|%{
     $_
 }
@@ -46,7 +47,7 @@ if($true){"Whitespace"}
 
 
 
-# Math
+# Math Operators
 1 + 2 - 3 * 4 % 5
 1+2-3*4%5
 
@@ -125,9 +126,9 @@ $array = @(
     "Third"
 )
 
-@("First","Second","Third")
+$array = @("First","Second","Third")
 
-"First","Second","Third"
+$array = "First","Second","Third"
 
 
 
@@ -168,7 +169,16 @@ Second line
 Third line" -split '\n'
 
 
+# PreSize arrays
+$a = 1..20
+$a = @(0) * 20
+$a = ,0 * 20
+
+
+
 #endregion
+
+
 #region Variables
 
 
@@ -193,13 +203,17 @@ $1st    #-> 1
 $rest   #-> @(2,3,4,5,6)
 
 
-# assign null in fewest charaters
+# Assigning null
+$a=$null
+$a=$z  # where $z us not defined or $null
+
 $1st='a'
 $2nd=$null
 
 $1st,$2nd='a'
 $1st    #-> "a"
 $2nd    #-> $null
+
 
 
 # Swap variables
@@ -221,6 +235,7 @@ $2nd    #-> "c"
 $3rd    #-> "c"
 
 
+
 # Assing and Return
 $n="a"    #-> no output
 ($n="a")  #-> "a"
@@ -231,8 +246,8 @@ $n = 0
 $n = $n + 1
 $n += 1
 
-($n++)    # use value then add 1
-(++$n)    # add 1 then use value
+$n++    # use value then add 1
+++$n    # add 1 then use value
 
 $j=$k=1
 $j++ + 20  #-> 21
@@ -251,9 +266,6 @@ $j=$k=1
 
 
 #region Iterating Numbers
-# foreach($item in $collection)
-
-foreach($n in 1..100){$n}
 
 # for (init; condition; increment)
 for($n=1; $n -le 100; $n++){$n}
@@ -266,7 +278,14 @@ for(){Get-Date}
 while(1){Get-Date}
 
 
-#pipeline
+# foreach($item in $collection) loop
+foreach($n in 1..100){$n}
+
+
+# foreach collection method
+(1..100).foreach({$_})
+
+# foreach pipeline
 1..100 | ForEach-Object {$_}
 1..100 | %{$_}
 
@@ -276,7 +295,7 @@ while(1){Get-Date}
 #endregion
 
 
-# filtering
+#region Filtering
 1..6 | Where-Object { $_ -gt 3}   #-> @(4,5,6)
 1..6 | Where { $_ -gt 3}
 
@@ -292,10 +311,10 @@ while(1){Get-Date}
 # works with match
 "one","two","three" -match 'e'  #-> @("one","three")
 
+#endregion
 
 
-
-# Soft Get-* Alaises
+#region Soft Get-* Alaises
 Get-Date
 Date
 
@@ -305,6 +324,4 @@ Service
 Get-Verb
 Verb
 
-process
-&"process"
-Get-Process
+#endregion
