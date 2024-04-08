@@ -50,23 +50,3 @@ for(
     Write-Host "30 Loop: $index"
 }
 Write-Host "60 After: $index"
-
-
-
-# 121: prime number example (exit condition)
-#...
-    for ($divisor = 2; $divisor -lt $number; $divisor++) {
-        if ($number % $divisor -eq 0) {
-            continue outer
-        }
-    }
-
-
-# 101: move if statement into condition and invert it
-#...
-    for ($divisor = 2; $number % $divisor -ne 0; $divisor++) {}
-    if($number -ne $divisor) {continue outer}
-
-
-# return to: code challenges/prime_numbers.ps1
-
