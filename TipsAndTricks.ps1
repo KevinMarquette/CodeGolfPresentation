@@ -5,7 +5,7 @@ function prompt {"#PSHSummit>"};Clear-Host
 
 
 # Output Notations
-Get-Date  #-> "Tuesday, April 9, 2024 2:05:01 PM"
+Get-Date  #-> "Tuesday, April 8, 2025 11:15:01 AM"
 1 + 2     #-> 3
 
 
@@ -64,7 +64,7 @@ $array|%{$_}
 
 
 
-# Comparison
+# Comparison Operators
 5 -eq 5
 5-eq5
 
@@ -85,7 +85,7 @@ $array-join0      #-> "10203040506"
 
 
 -join$array       #-> "123456"
-$array            #-> "1 2 3 4 5 6"
+"$array"            #-> "1 2 3 4 5 6"
 
 
 # Split
@@ -173,6 +173,7 @@ Third line" -split '\n'
 $a = 1..20
 $a = @(0) * 20
 $a = ,0 * 20
+$a = ,0*20
 
 
 
@@ -236,7 +237,7 @@ $3rd    #-> "c"
 
 
 
-# Assing and Return
+# Assigning and Return
 $n="a"    #-> no output
 ($n="a")  #-> "a"
 
@@ -291,6 +292,7 @@ foreach($n in 1..100){$n}
 
 #12 char
 1..100|%{$_}
+
 
 #endregion
 
