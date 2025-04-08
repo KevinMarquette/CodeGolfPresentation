@@ -50,15 +50,22 @@ function c(){
 
 
 # ternary operator?
+$a -eq 1 ? $true : $false
+
+
 if($n%2-eq0){
     $n=$n/2
 }else{
     $n=3*$n+1
 }
 
+$n=if($n%2 -eq 0){$n=$n/2}else{$n=3*$n+1}
+
 # $n = <expression> ? <true> : <false>
-$n = ($n%2 -eq 0) ? ($n/2) : (3*$n+1)
+$n= ($n%2 -eq 0)?($n/2):(3*$n+1)
+
 $n=$n%2-eq0?$n/2:3*$n+1
+
 
 
 # ternary operator (136 characters)
@@ -139,6 +146,10 @@ $_-1 == 0
 
 # inline everything (53)
 1..1000|%{for($s=0;$_-1;$s++){$_=$_%2?3*$_+1:$_/2}$s}
+
+
+1..1000|%{(for(;$_-1){$_=$_%2?3*$_+1:$_/2;1}).count}
+
 
 
 
@@ -253,3 +264,9 @@ $s={$_-1?1+($_%2?3*$_+1:$_/2|% $s):0}
 # inline scriptblock 49 (new record)
 1..1000|% ($s={$_-1?1+($_%2?3*$_+1:$_/2|% $s):0})
 
+
+# remove a space 48 (new record)
+1..1000|%($s={$_-1?1+($_%2?3*$_+1:$_/2|% $s):0})
+
+# number 1e3 47
+1..1e3|%($s={$_-1?1+($_%2?3*$_+1:$_/2|% $s):0})

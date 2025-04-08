@@ -1,4 +1,4 @@
-function prompt {"#PSHSummit>"};Clear-Host
+function prompt {"#PSHSummit>"};Clear-Host;return
 
 
 
@@ -43,6 +43,7 @@ if ( $true ) {
     "Whitespace"
 }
 
+# Whitespace mostly optional
 if($true){"Whitespace"}
 
 
@@ -261,7 +262,51 @@ $j=$k=1
 (++$k)   #-> 2
 
 
+# assigning from if
+$a= $true
+if($a){
+    $n = 3
+} else {
+    $n = 4
+}
 
+$n = if($a){
+    3
+}else{
+    4
+}
+
+$a= $true
+$n = if($a){3}else{4}
+
+
+# ternary operator
+# $n = <expression> ? <true> : <false>
+$n = $a ? 3 : 4
+
+
+# old school array based ternary operator
+$n = @(3,4)[$a]
+$n = (3,4)[$a]
+
+
+# unary operator (select one or nothing)
+$b=3
+$a=$false
+$n = if($a){$b}
+$n = ($b,$null)[$a]
+$n = ($b)[$a]
+$n = $b[$a]
+$n = $b[-1]
+
+
+# note on strings
+"fizz"[1]  # -> [char]'i'
+
+@("fizz")[1] # ->  $null
+{"fizz"}[1] # ->  $null
+"fizz"*0 # -> [string]::Empty
+$null -eq [string]::Empty # -> $false
 #endregion
 
 
@@ -271,6 +316,7 @@ $j=$k=1
 # for (init; condition; increment)
 for($n=1; $n -le 100; $n++){$n}
 
+# weird incomming
 # optional sections
 # for infinite loop
 for(;;){Get-Date}
@@ -315,8 +361,37 @@ foreach($n in 1..100){$n}
 
 #endregion
 
+# pipeline catch
+$a=$true
+$n = if($a){3}else{4}
+$n = for($i=1;$i -le 10;$i++){$i}
+$n = foreach($i in 1..10){$i}
+$n = switch('a'){'a'{3}'b'{4}}
 
-#region Soft Get-* Alaises
+
+# weird incomming
+# trailing newline optional?
+$n = if($a){3}else{4}
+5
+$n = if($a){3}else{4};5
+$n = if($a){3}else{4}5
+
+$n = for($i=1;$i -le 10;$i++){$i}5
+$n = foreach($i in 1..10){$i}5
+$n = switch('a'){'a'{3}'b'{4}}5
+
+
+#region Aliases
+1..6|Where-Object {$_ -gt 3}   #-> @(4,5,6)
+1..6|?{$_ -gt 3}   #-> @(4,5,6)
+1..100|ForEach-Object {$_}
+1..100|%{$_}
+
+"Hello, World!"|Out-Host  # -> "Hello, World!"
+"Hello, World!"|oh        # -> "Hello, World!"
+
+
+# Soft Get-* Alaises
 Get-Date
 Date
 
