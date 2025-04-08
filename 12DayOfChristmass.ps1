@@ -1,6 +1,5 @@
 
-<#
-Print the lyrics to the song The 12 Days of Christmas:
+<# Print the lyrics to the song The 12 Days of Christmas:
 
 On the First day of Christmas
 My true love sent to me
@@ -23,6 +22,8 @@ A Partridge in a Pear Tree.
 
 
 #>
+
+# 674: First attempt
 
 $days = @(
     "First"
@@ -62,7 +63,9 @@ for($index=0; $index -lt $days.Count; $index++){
 }
 
 
+
 # Compressing Arrays
+
 
 @(
 "First"
@@ -75,12 +78,32 @@ echo First Second Third
 echo First Second Third Fourth Fifth Sixth Seventh Eighth Ninth Tenth Eleventh Twelfth
 
 
+# Multi-Edit example
+$days = @(
+    "First"
+    "Second"
+    "Third"
+    "Fourth"
+    "Fifth"
+    "Sixth"
+    "Seventh"
+    "Eighth"
+    "Ninth"
+    "Tenth"
+    "Eleventh"
+    "Twelfth"
+)
 
+
+
+# Array of strings
 $song=@(
     "A Partridge in a Pear Tree."
     "Two Turtle Doves, and"
     "Three French Hens,"
 )
+
+# Here string and split
 
 $song = @"
 A Partridge in a Pear Tree.
@@ -96,7 +119,8 @@ Three French Hens,"-split'\n'
 
 
 
-# 551
+# 551: All together
+
 $days=echo First Second Third Fourth Fifth Sixth Seventh Eighth Ninth Tenth Eleventh Twelfth
 $song="A Partridge in a Pear Tree.
 Two Turtle Doves, and
@@ -120,6 +144,7 @@ for($index=0;$index -lt $days.Count;$index++){
 
 
 # 162 for loop
+
 for($index=0;$index -lt $days.Count;$index++){
     "On the {0} day of Christmas" -f $days[$index]
     "My true love sent to me"
@@ -129,6 +154,7 @@ for($index=0;$index -lt $days.Count;$index++){
 
 
 # 116 ForEach-Object
+
 0..11|%{
     "On the {0} day of Christmas" -f $days[$_]
     "My true love sent to me"
@@ -137,7 +163,8 @@ for($index=0;$index -lt $days.Count;$index++){
 }
 
 
-# 111 loop on days
+# 111: loop on days
+
 $i=0
 $days|%{
     "On the {0} day of Christmas" -f $_
@@ -162,7 +189,7 @@ $days|%{
 }
 
 
-#497
+# 478: All together again
 $days=echo First Second Third Fourth Fifth Sixth Seventh Eighth Ninth Tenth Eleventh Twelfth
 $song="A Partridge in a Pear Tree.
 Two Turtle Doves, and
@@ -185,7 +212,9 @@ $days|%{
 }
 
 
-#484 Inline Days
+
+# 466: Inline Days
+
 $song="A Partridge in a Pear Tree.
 Two Turtle Doves, and
 Three French Hens,
@@ -207,8 +236,9 @@ echo First Second Third Fourth Fifth Sixth Seventh Eighth Ninth Tenth Eleventh T
 }
 
 
-# encoding for ing,
-#481
+
+# 462: encoding for 'ing,'
+
 $n="ing,"
 $song="A Partridge in a Pear Tree.
 Two Turtle Doves, and
@@ -230,7 +260,10 @@ echo First Second Third Fourth Fifth Sixth Seventh Eighth Ninth Tenth Eleventh T
     ""
 }
 
-#454 inline song
+
+
+# 436: inline song and remove indent
+
 $n="ing,"
 $i=0
 echo First Second Third Fourth Fifth Sixth Seventh Eighth Ninth Tenth Eleventh Twelfth|%{
@@ -253,8 +286,10 @@ Twelve Drummers Drumm$n"-split'\n')[$i++..0]
 
 
 
-#440 move the newline and remove $i=0
+#430 move the newline
+
 $n="ing,"
+$i=0
 echo First Second Third Fourth Fifth Sixth Seventh Eighth Ninth Tenth Eleventh Twelfth|%{"On the $_ day of Christmas
 My true love sent to me"
 ("
@@ -277,7 +312,9 @@ Twelve Drummers Drumm$n"-split'\n')[++$i..0]}
 
 
 
-# final
+# 425: almost final, remove $i=0
+Remove-Variable i
+
 $n="ing,"
 echo First Second Third Fourth Fifth Sixth Seventh Eighth Ninth Tenth Eleventh Twelfth|%{"On the $_ day of Christmas
 My true love sent to me"
@@ -293,4 +330,32 @@ Eight Maids-a-Milk$n
 Nine Ladies Danc$n
 Ten Lords-a-Leap$n
 Eleven Pipers Pip$n
-Twelve Drummers Drumm$n"-split'\n')[++$i..0]}
+Twelve Drummers Drumm$n"-split'
+')[++$i..0]}
+
+
+
+# Expert Audience Challenge: Who spotted 1 more? (1 char)
+
+
+
+# 424: Final, remove newline in split
+Remove-Variable i
+
+$n="ing,"
+echo First Second Third Fourth Fifth Sixth Seventh Eighth Ninth Tenth Eleventh Twelfth|%{"On the $_ day of Christmas
+My true love sent to me"
+("
+A Partridge in a Pear Tree.
+Two Turtle Doves, and
+Three French Hens,
+Four Calling Birds,
+Five Gold Rings,
+Six Geese-a-Lay$n
+Seven Swans-a-Swimm$n
+Eight Maids-a-Milk$n
+Nine Ladies Danc$n
+Ten Lords-a-Leap$n
+Eleven Pipers Pip$n
+Twelve Drummers Drumm$n"-split'
+')[++$i..0]}
