@@ -1,5 +1,13 @@
 {
     "editor.renderWhitespace":"all",
-    "editor.fontSize": 16,
+    "editor.fontSize": 22,
     "powershell.scriptAnalysis.enable": false,
+    "editor.scrollbar.verticalScrollbarSize": 14,
+    "editor.scrollbar.vertical": "auto",
+    "scm.graph.pageOnScroll": false,
+    "git-graph.repository.onLoad.scrollToHead": false,
+    "editor.minimap.enabled": false,
+    "editor.glyphMargin": false,
+    "scm.diffDecorationsGutterWidth": 3,
+    "editor.fontFamily": "FiraCode, Consolas, 'Courier New', monospace",
 }
